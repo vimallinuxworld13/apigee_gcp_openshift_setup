@@ -419,6 +419,39 @@ oc -n apigee get ar
 oc -n apigee get arc
 
 
+create proxy from GCP UI:
+
+Proxy name: Enter myproxy
+Base path: /myproxy
+Target (Existing API): Enter "https://mocktarget.apigee.net"
+
+Update the ingressGateways[].svcType property to ClusterIP in your overrides file:
+ingressGateways:
+  svcType: ClusterIP
+
+helm upgrade ORG_NAME apigee-org/ \
+  --install \
+  --namespace apigee \
+  --atomic \
+  -f overrides.yaml
+
+  
+  
+kubectl get svc -n apigee -l app=apigee-ingressgateway
+apigee-ingressgateway-internal-chaining-myprojectlw5555-8cb0159   ClusterIP   10.217.5.163   <none>        15021/TCP,443/TCP   123m
+
+login to CRC VM:
+ssh -i ~/.crc/machines/crc/id_ed25519 core@127.0.0.1 -p 2222
+
+
+curl -H 'User-Agent: GoogleHC'  https://myprojectlw55555-test.hybrid-apigee.net:443/healthz/ingress --resolve myprojectlw55555-test.hybrid-apigee.net:443:10.217.5.163 -k
+Apigee Ingress is healthy
+
+curl https://myprojectlw55555-test.hybrid-apigee.net:443/myproxy --resolve myprojectlw55555-test.hybrid-apigee.net:443:10.217.5.163 -k
+Hello, Guest!
+
+
+
 
 
 

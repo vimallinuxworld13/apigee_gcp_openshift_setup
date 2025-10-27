@@ -14,7 +14,7 @@ or
 next again login
 gcloud auth login
 
-export gcp_project=vimalapigeeproject
+export gcp_project=vimalapigeeproject13
 
 gcloud config set project ${gcp_project}
 gcloud config list
@@ -35,8 +35,9 @@ or
 from gcloud shell"
 gcloud alpha billing projects link ${gcp_project} --billing-account $(gcloud alpha billing accounts list | head -1  | awk '{print $2 }')
 
-
+export gcp_project=vimalapigeeproject13
 export PROJECT_ID=$gcp_project
+export ORG_NAME=$PROJECT_ID
 
 gcloud services enable \
     apigee.googleapis.com \

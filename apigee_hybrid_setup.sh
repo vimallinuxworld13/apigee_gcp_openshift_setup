@@ -14,9 +14,13 @@ or
 next again login
 gcloud auth login
 
-export gcp_project=myprojectlw55555
+export gcp_project=vimalapigeeproject
+
 gcloud config set project ${gcp_project}
 gcloud config list
+gcloud projects list
+
+
 
 
 gcloud config set compute/region us-central1

@@ -142,10 +142,11 @@ oc create secret generic apigee-runtime-svc-account \
 
 oc create secret generic apigee-mint-task-scheduler-svc-account \
   --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mint-task-scheduler.json" \
-  -n apigee
+  -n $APIGEE_NAMESPACE
 
 
-oc get secret -n apigee
+oc get secret -n $APIGEE_NAMESPACE
+
 
 
 
@@ -220,7 +221,13 @@ curl -H "Authorization: Bearer $TOKEN" "https://apigee.googleapis.com/v1/organiz
 gcloud config set account $ROOT_EMAIL
 gcloud auth list
 
- 
+
+
+################ Day 1 ###############################
+
+
+
+
 mkdir $APIGEE_HELM_CHARTS_HOME/apigee-virtualhost/certs/
 openssl req  -nodes -new -x509 -keyout $APIGEE_HELM_CHARTS_HOME/apigee-virtualhost/certs/keystore-$ENV_GROUP.key -out \
     $APIGEE_HELM_CHARTS_HOME/apigee-virtualhost/certs/keystore-$ENV_GROUP.pem -subj '/CN='$DOMAIN'' -days 3650

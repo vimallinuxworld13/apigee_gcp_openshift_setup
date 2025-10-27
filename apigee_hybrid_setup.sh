@@ -1,6 +1,14 @@
-first time
-gcloud init
+crc start
+eval $(crc oc-env)
+ oc login -u kubeadmin  https://api.crc.testing:6443
+ oc get  nodes
 
+
+
+first time in linux workstation
+# gcloud init
+login to GCP UI by URL
+give project name
 or 
 
 next again login

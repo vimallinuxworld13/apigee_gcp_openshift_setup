@@ -1,0 +1,21 @@
+export gcp_project=vimalapigeeproject13
+
+export gcp_project=vimalapigeeproject13
+export PROJECT_ID=$gcp_project
+export ORG_NAME=$PROJECT_ID
+
+export TOKEN=$(gcloud auth print-access-token)
+export ORG_NAME=$PROJECT_ID
+export ANALYTICS_REGION="us-central1"
+export RUNTIMETYPE=HYBRID
+
+export ENV_NAME="test"
+export ENV_GROUP="test-group"
+export DOMAIN=${PROJECT_ID}-test.hybrid-apigee.net
+export INGRESS_DN=$DOMAIN
+GCP_REGION="us-central1"
+GCP_ZONE="us-central1-a"
+
+cd apigee-hybrid/helm-charts
+export APIGEE_HELM_CHARTS_HOME=$PWD
+

@@ -77,8 +77,8 @@ export ENV_NAME="test"
 export ENV_GROUP="test-group"
 export DOMAIN=${PROJECT_ID}-test.hybrid-apigee.net
 export INGRESS_DN=$DOMAIN
-GCP_REGION="us-central1"
-GCP_ZONE="us-central1-a"
+export GCP_REGION="us-central1"
+export GCP_ZONE="us-central1-a"
 
 
 
@@ -105,7 +105,49 @@ $APIGEE_HELM_CHARTS_HOME/apigee-operator/etc/tools/create-service-account \
   --env prod \
   --dir $APIGEE_HELM_CHARTS_HOME/service-accounts
 
-ls $APIGEE_HELM_CHARTS_HOME/service-accounts/
+
+
+ls -l $APIGEE_HELM_CHARTS_HOME/service-accounts/
+
+oc create namespace apigee
+export APIGEE_NAMESPACE=apigee
+
+oc create secret generic apigee-logger-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-logger.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-metrics-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-metrics.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-watcher-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-watcher.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-udca-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-udca.json" \
+  -n $APIGEE_NAMESPACE
+    
+oc create secret generic apigee-mart-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mart.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-synchronizer-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-synchronizer.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-runtime-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-runtime.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-mint-task-scheduler-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mint-task-scheduler.json" \
+  -n apigee
+
+
+oc get secret -n apigee
+
+
 
 gcloud auth list
 
@@ -178,44 +220,7 @@ curl -H "Authorization: Bearer $TOKEN" "https://apigee.googleapis.com/v1/organiz
 gcloud config set account $ROOT_EMAIL
 gcloud auth list
 
-oc create namespace apigee
-export APIGEE_NAMESPACE=apigee
-
-oc create secret generic apigee-logger-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-logger.json" \
-  -n $APIGEE_NAMESPACE
-
-oc create secret generic apigee-metrics-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-metrics.json" \
-  -n $APIGEE_NAMESPACE
-
-oc create secret generic apigee-watcher-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-watcher.json" \
-  -n $APIGEE_NAMESPACE
-
-oc create secret generic apigee-udca-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-udca.json" \
-  -n $APIGEE_NAMESPACE
-    
-oc create secret generic apigee-mart-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mart.json" \
-  -n $APIGEE_NAMESPACE
-
-oc create secret generic apigee-synchronizer-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-synchronizer.json" \
-  -n $APIGEE_NAMESPACE
-
-oc create secret generic apigee-runtime-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-runtime.json" \
-  -n $APIGEE_NAMESPACE
-
-oc create secret generic apigee-mint-task-scheduler-svc-account \
-  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mint-task-scheduler.json" \
-  -n apigee
-
-
-
-
+ 
 mkdir $APIGEE_HELM_CHARTS_HOME/apigee-virtualhost/certs/
 openssl req  -nodes -new -x509 -keyout $APIGEE_HELM_CHARTS_HOME/apigee-virtualhost/certs/keystore-$ENV_GROUP.key -out \
     $APIGEE_HELM_CHARTS_HOME/apigee-virtualhost/certs/keystore-$ENV_GROUP.pem -subj '/CN='$DOMAIN'' -days 3650

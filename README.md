@@ -16,6 +16,19 @@ crc start
 
 eval $(crc oc-env)
 
+sudo mv ./crc/machines /tmp
+mkdir ~/.crc/machines/crc
+sudo mount --bind  /tmp/crc/  ~/.crc/machines/crc
+crc start
+
+
+
+
+
+
+
+
+
 
 
 

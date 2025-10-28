@@ -214,12 +214,21 @@ curl -X PATCH -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 gcloud auth activate-service-account apigee-udca@${PROJECT_ID}.iam.gserviceaccount.com   --key-file=$APIGEE_HELM_CHARTS_HOME/service-accounts/${PROJECT_ID}-apigee-udca.json
 gcloud auth list
 
+
+export TOKEN=$(gcloud auth print-access-token)
+
+
+
 curl -H "Authorization: Bearer $TOKEN" "https://apigee.googleapis.com/v1/organizations/${PROJECT_ID}/environments"
 curl -H "Authorization: Bearer $TOKEN" "https://apigee.googleapis.com/v1/organizations/${PROJECT_ID}/instances"
 curl -H "Authorization: Bearer $TOKEN" "https://apigee.googleapis.com/v1/organizations/${PROJECT_ID}/environments/test"
 
 gcloud config set account $ROOT_EMAIL
 gcloud auth list
+
+export TOKEN=$(gcloud auth print-access-token)
+
+
 
 
 

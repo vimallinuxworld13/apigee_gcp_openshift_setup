@@ -16,7 +16,7 @@ export INGRESS_DN=$DOMAIN
 GCP_REGION="us-central1"
 GCP_ZONE="us-central1-a"
 
-cd apigee-hybrid/helm-charts
+cd ~/apigee-hybrid/helm-charts
 export APIGEE_HELM_CHARTS_HOME=$PWD
 
 export APIGEE_NAMESPACE=apigee

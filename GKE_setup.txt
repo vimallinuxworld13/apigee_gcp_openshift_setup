@@ -76,5 +76,8 @@ oc apply -k  apigee-operator/etc/crds/default/ \
 oc get crds | grep apigee
 
 
+ kubectl  exec apigee-cassandra-default-0  -n  apigee  --  nodetool -u jmxuser      -pw  iloveapis123   status
+
+
 
 

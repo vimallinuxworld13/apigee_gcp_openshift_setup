@@ -20,4 +20,7 @@ do it in linux only:
 # gcloud components install gke-gcloud-auth-plugin
 # gcloud container clusters get-credentials  lwcluster1
 
+# kubectl get nodes
+
+
 

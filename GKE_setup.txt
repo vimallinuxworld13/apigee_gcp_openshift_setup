@@ -79,5 +79,7 @@ oc get crds | grep apigee
  kubectl  exec apigee-cassandra-default-0  -n  apigee  --  nodetool -u jmxuser      -pw  iloveapis123   status
 
 
+kubectl port-forward  svc/apigee-metrics-apigee-telemetry-app    1234:9090  -n apigee
+
 
 

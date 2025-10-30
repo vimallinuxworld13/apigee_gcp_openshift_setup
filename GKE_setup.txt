@@ -16,5 +16,7 @@ gcloud container clusters list
 
 gcloud container clusters create lwcluster1 --machine-type n2-standard-4 --num-nodes 3 --zone us-central1-a  --disk-size 50GB
 
+gcloud components install gke-gcloud-auth-plugin
+
 
 

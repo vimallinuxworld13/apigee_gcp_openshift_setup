@@ -11,4 +11,10 @@
  1047  oc  get secrets   apigee-datastore-default-creds  -n apigee -o yaml
  1048  base64  -d
 
+  kubectl get pods
+ 1051  kubectl get pods -n apigee
+ 1052  kubectl exec -it apigee-cassandra-default-0  -n apigee  --  sh
+
+
+
 

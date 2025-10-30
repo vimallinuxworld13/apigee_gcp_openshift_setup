@@ -1,0 +1,14 @@
+ 1037  oc get pods -n apigee -o wide -w
+ 1038* oc get nod
+ 1039  oc get pods -n apigee -o wide
+ 1040  oc get pods -n apigee
+ 1041  oc get pvc -n apigee
+ 1042  oc get pv -n apigee
+ 1043  oc describe pods  apigee-cassandra-default-0 -n apigee
+ 1044  oc  get secrets -n apigee
+ 1045  oc  get secrets   apigee-datastore-default-creds  -n apigee
+ 1046  oc  describe  secrets   apigee-datastore-default-creds  -n apigee
+ 1047  oc  get secrets   apigee-datastore-default-creds  -n apigee -o yaml
+ 1048  base64  -d
+
+

@@ -23,4 +23,58 @@ do it in linux only:
 # kubectl get nodes
 
 
+oc create namespace apigee
+export APIGEE_NAMESPACE=apigee
+
+oc create secret generic apigee-logger-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-logger.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-metrics-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-metrics.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-watcher-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-watcher.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-udca-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-udca.json" \
+  -n $APIGEE_NAMESPACE
+    
+oc create secret generic apigee-mart-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mart.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-synchronizer-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-synchronizer.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-runtime-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-runtime.json" \
+  -n $APIGEE_NAMESPACE
+
+oc create secret generic apigee-mint-task-scheduler-svc-account \
+  --from-file="client_secret.json=$APIGEE_HELM_CHARTS_HOME/service-accounts/$PROJECT_ID-apigee-mint-task-scheduler.json" \
+  -n $APIGEE_NAMESPACE
+
+
+oc get secret -n $APIGEE_NAMESPACE
+
+
+
+oc apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.17.4/cert-manager.yaml
+oc get all -n cert-manager -o wide
+
+
+
+oc apply -k  apigee-operator/etc/crds/default/ \
+  --server-side \
+  --force-conflicts \
+  --validate=false
+
+oc get crds | grep apigee
+
+
+
 

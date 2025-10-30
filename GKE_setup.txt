@@ -18,6 +18,6 @@ gcloud container clusters create lwcluster1 --machine-type n2-standard-4 --num-n
 
 do it in linux only:
 # gcloud components install gke-gcloud-auth-plugin
-
+# gcloud container clusters get-credentials  lwcluster1
 
 

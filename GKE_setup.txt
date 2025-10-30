@@ -1,0 +1,15 @@
+https://docs.cloud.google.com/sdk/docs/install-sdk
+
+gcloud init
+gcloud auth list
+
+gcloud components  list
+gcloud components  install kubectl
+
+gcloud config set project myprojectlw55555
+
+gcloud config set compute/region us-central1
+gcloud config set compute/zone us-central1-a
+gcloud config list
+
+

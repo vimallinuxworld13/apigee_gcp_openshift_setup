@@ -16,5 +16,19 @@
  1052  kubectl exec -it apigee-cassandra-default-0  -n apigee  --  sh
 
 
+    1  ping 34.118.235.159
+    2  curl 34.118.235.159
+    3  apt-get update
+    4  apt-get curl
+    5  apt-get install  curl
+    6  curl 34.118.235.159
+    7  curl -H 'User-Agent: GoogleHC'  https://myprojectlw55555-test.hybrid-apigee.net:443/healthz/ingress --resolve myprojectlw55555-test.hybrid-apigee.net:443:34.118.235.159  -k
+    8  curl -H 'User-Agent: GoogleHC'  https://myprojectlw55555-test.hybrid-apigee.net:443/testproxy --resolve myprojectlw55555-test.hybrid-apigee.net:443:34.118.235.159  -k
+    9  curl  https://myprojectlw55555-test.hybrid-apigee.net:443/testproxy --resolve myprojectlw55555-test.hybrid-apigee.net:443:34.118.235.159  -k
+   10  curl  https://myprojectlw55555-test.hybrid-apigee.net:443/vproxy --resolve myprojectlw55555-test.hybrid-apigee.net:443:34.118.235.159  -k
+   11  curl  https://myprojectlw55555-test.hybrid-apigee.net:443/newproxy --resolve myprojectlw55555-test.hybrid-apigee.net:443:34.118.235.159  -k
+   12  history
+
+
 
 

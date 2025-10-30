@@ -12,4 +12,9 @@ gcloud config set compute/region us-central1
 gcloud config set compute/zone us-central1-a
 gcloud config list
 
+gcloud container clusters list
+
+gcloud container clusters create lwcluster1 --machine-type n2-standard-4 --num-nodes 3 --zone us-central1-a  --disk-size 50GB
+
+
 

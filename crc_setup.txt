@@ -1,0 +1,33 @@
+https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
+
+
+su - vimal
+
+wgte  https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
+
+
+tar -xvf crc-linux-amd64.tar.xz
+
+
+cd crc...
+
+crc setup
+
+crc config set cpus 8
+crc config set memory 16000
+crc config set disk-size 200 
+crc config set enable-cluster-monitoring true
+
+crc start
+
+
+
+
+
+crc delete -f
+crc cleanup
+
+crc setup
+crc start
+
+

@@ -31,4 +31,115 @@
 
 
 
+ 385  mkdir kube_code_wellsfargo_oct_2025
+  386  cd kube_code_wellsfargo_oct_2025
+  387  kubectl run mypod1  --image=vimal13/apache-webserver-php --dry-run  -o yaml  > mypod1.yml
+  388  ls
+  389  kubectl get pods
+  390  notepad mypod1.yml
+  391  kubectl apply -f mypod1.yml
+  392  kubectl get pods
+  393  kubectl delete -f mypod1.yml
+  394  notepad mypod1.yml
+  395  kubectl  get rs
+  396  kubectl -h
+  397  kubectl -h
+  398  kubectl api-resources
+  399  kubectl api-resources  |  grep replica
+  400  kubectl api-resources  |  less
+  401  kubectl get pods
+  402  kubectl get po
+  403  kubectl explain ReplicaSets
+  404  kubectl explain ReplicaSets.spec
+  405  kubectl explain ReplicaSets.spec.template
+  406  notepad mypod1.yml
+  407  kubectl explain ReplicaSets.spec.template.metadata
+  408  kubectl explain ReplicaSets.spec
+  409  kubectl explain ReplicaSets.spec.selector
+  410  kubeclt get pods
+  411  kubectl get pods
+  412  ls
+  413  kubectl apply -f mypod1.yml
+  414  kubectl get pods
+  415  kubectl get pods  --show-labels
+  416  notepad  myrc1.yml
+  417  cat myrc1.yml
+  418  kubectl  get rs
+  419  kubectl  apply -f myrc1.yml
+  420  kubectl  apply -f myrc1.yml
+  421  notepad myrc1.yml
+  422  kubectl  apply -f myrc1.yml
+  423  kubectl  get rs
+  424  kubectl get pods  --show-labels
+  425  kubectl  describe rs  rs1
+  426  kubectl get pods  --show-labels
+  427  kubectl delete pods    rs1-g4jp6
+  428  kubectl get pods  --show-labels
+  429  kubectl  describe rs  rs1
+  430  kubectl get pods  --show-labels
+  431  kubectl scale  rs  rs1  --replicas=2
+  432  kubectl get pods  --show-labels
+  433  kubectl scale  rs  rs1  --replicas=10
+  434  kubectl get pods  --show-labels
+  435  kubectl scale  rs  rs1  --replicas=5
+  436  kubectl get pods
+  437  kubectl get pods
+  438  kubectl get rs
+  439  kubectl get pods  --show-labels
+  440  cat myrc1.yml
+  441  kubectl expose rs rs1  -h
+  442  kubectl expose rs rs1  --port=80  --target-port=80 --type=LoadBalancer --dry-run  -o yaml
+  443  kubectl expose rs rs1  --port=80  --target-port=80 --type=LoadBalancer --dry-run  -o yaml > mysvc1.yml
+  444  notepad mysvc1.yml
+  445  kubectl get svc
+  446  kubectl create -f mysvc1.yml
+  447  kubectl get pods --show-labesl
+  448  kubectl get pods --show-labels
+  449  kubectl get svc
+  450  kubectl describe svc
+  451  kubectl get pods --show-labels -o wide
+  452  kubectl  get svc
+  453  kubectl  get  pods
+  454  kubectl scale  rs  rs1  --replicas=1
+  455  kubectl  get  pods
+  456  kubectl  get  pods -o wide
+  457  kubectl scale  rs  rs1  --replicas=4
+  458  kubectl scale  rs  rs1  --replicas=1
+  459  kubectl  get  pods -o wide
+  460  kubectl describe svc
+  461  kubectl scale  rs  rs1  --replicas=4
+  462  kubectl describe svc
+  463  kubectl create deployment myd1 --image=vimal13/apache-webserver-php:v10  --dry-run -o yaml
+  464  kubectl get all
+  465  kubectl delete all --all
+  466  kubectl get all
+  467  kubectl create deployment myd1 --image=vimal13/apache-webserver-php:v10  --dry-run -o yaml > myd.yaml
+  468  kubectl expose deployment myd1  --port=80  --target-port=80 --type=LoadBalancer --dry-run  -o yaml > mysvc1.yml
+  469  kubectl expose deployment myd1  --port=80  --target-port=80 --type=LoadBalancer --dry-run  -o yaml > mysvc1.yml
+  470  ls
+  471  kubectl apply -f myd.yaml
+  472  kubectl get deployment
+  473  kubectl get  rs
+  474  kubectl get  pods
+  475  vim myd.yaml
+  476  kubectl get  pods
+  477  kubectl apply -f myd.yaml
+  478  kubectl get  pods
+  479  kubectl expose deployment myd1  --port=80  --target-port=80 --type=LoadBalancer --dry-run  -o yaml > mysvc1.yml
+  480  cat mysvc1.yml
+  481  kubectl apply -f mysvc1.yml
+  482  kubectl get svc
+  483  kubectl get svc
+  484  kubectl get  pods
+  485  kubectl describe   pods  myd1-88695b475-xmkpw
+  486  kubectl get svc
+  487  kubectl rollout
+  488  kubectl rollout history deployment myd1
+  489  kubectl set
+  490  kubectl set image
+  491  kubectl set image deployment myd1
+  492  kubectl set image deployment myd1 apache-webserver-php=vimal13/apache-webserver-php:v11
+  493  history
+
+
 
